@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Price Prediction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .img {
+            /* Add styles for your image container if needed */
+        }
+
+        .form {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .area,
+        .location {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .switch-field {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .switch-field input[type="radio"] {
+            display: none;
+        }
+
+        .switch-field label {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .switch-field input[type="radio"]:checked + label {
+            background-color: #05263b;
+        }
+
+        .submit {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="img"></div>
+    <form class="form">
+        <h2>Area (Square Feet)</h2>
+        <input class="area" type="text" id="uiSqft" class="floatLabel" name="Squareft" value="1000">
+        <h2>No. of BHK</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+            <label for="radio-bhk-5">5</label>
+        </div>
+    </form>
+    <form class="form">
+        <h2>No. of Bathroom</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+            <label for="radio-bath-1">1</label>
+            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
+            <label for="radio-bath-2">2</label>
+            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+            <label for="radio-bath-3">3</label>
+            <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+            <label for="radio-bath-4">4</label>
+            <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+            <label for="radio-bath-5">5</label>
+        </div>
+        <h2>Location</h2>
+        <div>
+            <select class="location" name="" id="uiLocations">
+                <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+                <option>Electronic City</option>
+                <option>Rajaji Nagar</option>
+            </select>
+        </div>
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+        <!-- <div id="uiEstimatedPrice" class="result"> -->
+            <div id="uiEstimatedPrice" class="result">
+                <h2>Estimated Price</h2>
+                <p id="estimatedPriceText"></p>
+            </div>
+            <h2></h2>
+        </div>
+    </form>
+</body>
+</html>
